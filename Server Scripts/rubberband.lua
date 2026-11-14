@@ -9,6 +9,8 @@ local ballastPercent = false
 local lapToActivate = 0
 local active = false
 local practice, quali, race
+local tgtBallast
+local tgtRestrictor
 
 function setActive()
 local session = ac.getSession(ac.getSim().currentSessionIndex).type
