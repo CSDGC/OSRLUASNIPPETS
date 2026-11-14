@@ -47,14 +47,25 @@ function script.update(dt)
             local gap = ac.getGapBetweenCars(0, lcar.index)
             if selfCar.speedKmh > 50 and lcar.lapCount >= lapToActivate then
                 if ballastPercent then
-                    physics.setCarBallast(0, car.mass*(ballastlut:get(gap)*0.01))
+                    tgtBallast = car.mass*(ballastlut:get(gap)*0.01)
+                    --physics.setCarBallast(0, car.mass*(ballastlut:get(gap)*0.01))
                 else
-                    physics.setCarBallast(0, ballastlut:get(gap))
+                    tgtBallast = ballastlut:get(gap)
+                    --physics.setCarBallast(0, ballastlut:get(gap))
                 end
-                physics.setCarRestrictor(0, restrictorlut:get(gap))
+                tgtRestrictor = restrictorlut:get(gap)
+                --physics.setCarRestrictor(0, restrictorlut:get(gap))
                 
             end
             updTimer = updDelay
         end
     end
+
+    ac.debug("1 lcar",lcar)
+    ac.debug("2 lcar.lapcount",lcar.lapCount)
+    ac.debug("3 lcar.index",lcar.index)
+    ac.debug("4 gap",gap)
+    ac.debug("5 ballast",tgtBallast)
+    ac.debug("6 restrictor",tgtRestrictor)
+    ac.debug("7 updTimer",updTimer)
 end
